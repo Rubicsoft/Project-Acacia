@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://0aa7x8o1v3dm"]
+
+[ext_resource type="Script" path="res://script/player/player_controller.gd" id="1_65q4m"]
+[ext_resource type="Texture2D" uid="uid://dndrcktnevugy" path="res://prototype/player/sprite_buddy.png" id="1_rp8fx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3hrlw"]
+radius = 0.239624
+height = 1.24574
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rny66"]
+radius = 1.0
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_65q4m")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.005
+billboard = 1
+texture = ExtResource("1_rp8fx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3hrlw")
+
+[node name="NearbyRaycast" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NearbyRaycast"]
+shape = SubResource("SphereShape3D_rny66")
+
+[connection signal="body_entered" from="NearbyRaycast" to="." method="_on_nearby_raycast_body_entered"]
