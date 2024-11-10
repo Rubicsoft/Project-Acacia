@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg5sdjcedlwmd"]
+
+[ext_resource type="Script" path="res://script/ui/pause_menu.gd" id="1_7gy2m"]
+
+[sub_resource type="Theme" id="Theme_sgnsj"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7gy2m")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -33.0
+offset_right = 74.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_sgnsj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ContinueBtn" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="QuitBtn" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "QUIT TO DESKTOP"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

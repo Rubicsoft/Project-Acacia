@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://doyhdvpnvmvis"]
+[gd_scene load_steps=21 format=3 uid="uid://doyhdvpnvmvis"]
 
 [ext_resource type="Material" uid="uid://crhsvl4kmih8n" path="res://prototype/prototype_gridmaps/grey_gridmap.tres" id="1_aemn8"]
 [ext_resource type="PackedScene" uid="uid://0aa7x8o1v3dm" path="res://prefabs/player/player.tscn" id="2_br3nj"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ixshx2rt2kw6" path="res://prefabs/objects/gate.tscn" id="6_2xrlg"]
 [ext_resource type="AudioStream" uid="uid://bds4cbv6ryk45" path="res://assets/sounds/rain.ogg" id="7_0gbtc"]
 [ext_resource type="AudioStream" uid="uid://gh6bkrnxiee2" path="res://assets/bgm/bgm_eternal_garden.ogg" id="8_h4h52"]
+[ext_resource type="PackedScene" uid="uid://dg5sdjcedlwmd" path="res://ui/pause_menu.tscn" id="9_goidf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nfh38"]
 size = Vector3(50, 0.2, 50)
@@ -29,6 +30,12 @@ font_names = PackedStringArray("Arial")
 [sub_resource type="BoxMesh" id="BoxMesh_h4b32"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kck5j"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yvlt6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k1fc6"]
+size = Vector2(0.05, 0.1)
+orientation = 2
 
 [node name="Main" type="Node3D"]
 
@@ -183,3 +190,15 @@ bus = &"ENV"
 stream = ExtResource("8_h4h52")
 autoplay = true
 bus = &"BGM"
+
+[node name="PauseMenu" parent="." instance=ExtResource("9_goidf")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 7, 1)
+cast_shadow = 0
+lifetime = 1.5
+preprocess = 1.0
+randomness = 0.3
+collision_base_size = 0.0
+process_material = SubResource("ParticleProcessMaterial_yvlt6")
+draw_pass_1 = SubResource("PlaneMesh_k1fc6")
