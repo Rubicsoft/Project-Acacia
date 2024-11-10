@@ -13,6 +13,7 @@ config_version=5
 config/name="Project Acacia"
 run/main_scene="res://prototype/starter.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/bg_color=Color(0.103273, 0.134884, 0.161383, 1)
 config/icon="res://icon.svg"
 
 [display]
