@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://doyhdvpnvmvis"]
+[gd_scene load_steps=16 format=3 uid="uid://doyhdvpnvmvis"]
 
 [ext_resource type="Material" uid="uid://crhsvl4kmih8n" path="res://prototype/prototype_gridmaps/grey_gridmap.tres" id="1_aemn8"]
 [ext_resource type="PackedScene" uid="uid://0aa7x8o1v3dm" path="res://prefabs/player/player.tscn" id="2_br3nj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://script/camera/camera_control.gd" id="4_1lcom"]
 [ext_resource type="Material" uid="uid://0vg2pk7j1lyl" path="res://prototype/prototype_gridmaps/red_gridmap.tres" id="4_eq8np"]
 [ext_resource type="PackedScene" uid="uid://ixshx2rt2kw6" path="res://prefabs/objects/gate.tscn" id="6_2xrlg"]
+[ext_resource type="AudioStream" uid="uid://bds4cbv6ryk45" path="res://assets/sounds/rain.ogg" id="7_0gbtc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nfh38"]
 size = Vector3(50, 0.2, 50)
@@ -156,3 +157,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 
 [node name="Gate" parent="Gates" instance=ExtResource("6_2xrlg")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.189271, 0.0951426, -3.99289)
+
+[node name="Rains" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0gbtc")
+autoplay = true
+bus = &"ENV"
