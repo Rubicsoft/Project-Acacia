@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://doyhdvpnvmvis"]
+[gd_scene load_steps=18 format=3 uid="uid://doyhdvpnvmvis"]
 
 [ext_resource type="Material" uid="uid://crhsvl4kmih8n" path="res://prototype/prototype_gridmaps/grey_gridmap.tres" id="1_aemn8"]
 [ext_resource type="PackedScene" uid="uid://0aa7x8o1v3dm" path="res://prefabs/player/player.tscn" id="2_br3nj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://0vg2pk7j1lyl" path="res://prototype/prototype_gridmaps/red_gridmap.tres" id="4_eq8np"]
 [ext_resource type="PackedScene" uid="uid://ixshx2rt2kw6" path="res://prefabs/objects/gate.tscn" id="6_2xrlg"]
 [ext_resource type="AudioStream" uid="uid://bds4cbv6ryk45" path="res://assets/sounds/rain.ogg" id="7_0gbtc"]
+[ext_resource type="AudioStream" uid="uid://gh6bkrnxiee2" path="res://assets/bgm/bgm_eternal_garden.ogg" id="8_h4h52"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nfh38"]
 size = Vector3(50, 0.2, 50)
@@ -21,6 +22,9 @@ size = Vector3(50, 0.2, 50)
 [sub_resource type="BoxMesh" id="BoxMesh_fjq2p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2jm47"]
+
+[sub_resource type="SystemFont" id="SystemFont_bb2o4"]
+font_names = PackedStringArray("Arial")
 
 [sub_resource type="BoxMesh" id="BoxMesh_h4b32"]
 
@@ -132,6 +136,16 @@ surface_material_override/0 = ExtResource("4_eq8np")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SmallObject/Box/StaticBody3D"]
 shape = SubResource("BoxShape3D_2jm47")
 
+[node name="Label3D" type="Label3D" parent="SmallObject"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -1)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+text = "A game by REMI Games"
+font = SubResource("SystemFont_bb2o4")
+outline_size = 0
+
 [node name="Trees" type="Node" parent="."]
 
 [node name="Tree1" type="MeshInstance3D" parent="Trees"]
@@ -158,7 +172,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 [node name="Gate" parent="Gates" instance=ExtResource("6_2xrlg")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.189271, 0.0951426, -3.99289)
 
-[node name="Rains" type="AudioStreamPlayer" parent="."]
+[node name="Audio" type="Node" parent="."]
+
+[node name="Rains" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_0gbtc")
 autoplay = true
 bus = &"ENV"
+
+[node name="BGM" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_h4h52")
+autoplay = true
+bus = &"BGM"
